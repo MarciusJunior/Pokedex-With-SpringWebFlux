@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POKEDEX</title>
+</head>
+<body>
+    <ul>
+
+    </ul>
+    <script type="text/javascript">
+
+        if(!!window.EventSource){
+            var evtSource = new EventSource('Pokemon/events'); //http:localhost:8080/index.html
+            var eventList = document.querySelector('ul');
+
+            evtSource.onmessage = function(e) {
+                var newElement = document.createElement("li");
+
+                newElement.textContent = "Event: " + e.data;
+                eventList.appendChild(newElement);
+            }
+        } else{
+            alerta("O Browser não suporta MEU CARO!");
+        }
+
+    </script>
+</body>
+</html>
